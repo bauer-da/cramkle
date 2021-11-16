@@ -15,10 +15,6 @@ export default [
         component: () => import('./pages/DecksSection'),
         path: 'decks',
       },
-      {
-        component: () => import('./pages/ModelsSection'),
-        path: 'models',
-      },
     ],
   },
   {
@@ -66,14 +62,6 @@ export default [
           {
             component: () => import('./pages/NotePage'),
             path: '/d/:slug/note/:noteId',
-          },
-          {
-            component: () => import('./pages/AddModelPage'),
-            path: '/models/create',
-          },
-          {
-            component: () => import('./pages/ModelPage'),
-            path: '/m/:id',
           },
           {
             component: () => import('./pages/SettingsPage'),

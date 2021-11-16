@@ -9,7 +9,6 @@ import { Outlet, useLocation, useNavigate } from 'react-router'
 import { HeaderPortal } from '../components/HeaderPortal'
 import { useCurrentUser } from '../components/UserContext'
 import { DecksIcon } from '../components/icons/DecksIcon'
-import { ModelsIcon } from '../components/icons/ModelsIcon'
 import { StudyIcon } from '../components/icons/StudyIcon'
 import { Tab, TabList, TabPanels, Tabs } from '../components/views/Tabs'
 import { Tooltip } from '../components/views/Tooltip'
@@ -57,10 +56,6 @@ const HomePage: React.FunctionComponent = () => {
     }
     case '/decks': {
       index = 1
-      break
-    }
-    case '/models': {
-      index = 2
       break
     }
     default: {
@@ -117,10 +112,6 @@ const HomePage: React.FunctionComponent = () => {
           path = '/decks'
           break
         }
-        case 2: {
-          path = '/models'
-          break
-        }
         default: {
           throw new Error('Unexpected index ' + index)
         }
@@ -146,7 +137,6 @@ const HomePage: React.FunctionComponent = () => {
               <TabList className="overflow-y-auto w-full md:w-auto h-full justify-around md:justify-center">
                 <HomeTab Icon={StudyIcon} label={i18n._(t`Study`)} />
                 <HomeTab Icon={DecksIcon} label={i18n._(t`Decks`)} />
-                <HomeTab Icon={ModelsIcon} label={i18n._(t`Models`)} />
               </TabList>
             </HeaderPortal>
             <TabPanels>

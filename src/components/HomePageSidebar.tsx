@@ -4,11 +4,9 @@ import type { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 import { CircleIcon } from './icons/CircleIcon'
-import { MarketplaceIcon } from './icons/MarketplaceIcon'
 import { ProfileIcon } from './icons/ProfileIcon'
 import { SettingsIcon } from './icons/SettingsIcon'
 import { StatisticsIcon } from './icons/StatisticsIcon'
-import { Chip } from './views/Chip'
 import { List, ListItem } from './views/List'
 
 const HomePageSidebar: FC<{ className?: string }> = ({ className }) => {
@@ -23,20 +21,6 @@ const HomePageSidebar: FC<{ className?: string }> = ({ className }) => {
         </ListItem>
         <ListItem as={Link} to="/settings/profile" icon={<ProfileIcon />}>
           <Trans>Profile</Trans>
-        </ListItem>
-        <ListItem
-          as={Link}
-          to="/marketplace"
-          icon={<MarketplaceIcon />}
-          disabled
-        >
-          <div className="flex items-center">
-            <Trans>Marketplace</Trans>
-
-            <Chip size="small" color="primary" className="ml-auto">
-              <Trans>soon</Trans>
-            </Chip>
-          </div>
         </ListItem>
       </List>
 

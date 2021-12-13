@@ -10,8 +10,13 @@ import { blockStyleFn } from './BlockStyleControls'
 import styles from './TagEditor.module.css'
 import type { TaggableEntry } from './TaggableEntry'
 import TagsPopup from './TagsPopup'
-import replaceTagInEditorState from './replaceTagInEditorState'
-import searchTags from './searchTags'
+// import FunctionsPopup from './FunctionsPopup'
+import { TAG_TYPE } from './constants'
+import {
+  replaceFunctionInEditorState,
+  replaceTagInEditorState,
+} from './replaceTagInEditorState'
+import { searchFieldTags, searchFunctionTags } from './searchTags'
 
 interface Props
   extends Omit<
@@ -22,47 +27,91 @@ interface Props
     | 'keyBindingFn'
     | 'handleKeyCommand'
   > {
-  tagSource: TaggableEntry[]
+  fieldTagSource: TaggableEntry[]
+  functionTagSource: TaggableEntry[]
   autoHighlight?: boolean
   autoUpdateHighlight?: boolean
 }
 
-interface State {
+interface TagTypeState {
   visibleTagEntries: TaggableEntry[]
   highlightedTag: TaggableEntry | null
   characterOffset: number
 }
+interface FunctionTagTypeState {
+  visibleTagEntries: TaggableEntry[]
+  highlightedTag: TaggableEntry | null
+  characterOffset: number
+}
+interface State {
+  fieldTags: TagTypeState
+  functionTags: FunctionTagTypeState
+}
 
 type Action =
   | { type: 'reset' }
+  | { type: 'reset_field_tags' }
+  | { type: 'reset_function_tags' }
   | ({ type: 'update' } & State)
-  | { type: 'update_highlighted'; highlightedTag: TaggableEntry | null }
+  | { type: 'update_tags_highlighted'; highlightedTag: TaggableEntry | null }
+  | {
+      type: 'update_functions_highlighted'
+      highlightedTag: TaggableEntry | null
+    }
 
 const initialState: State = {
-  visibleTagEntries: [],
-  highlightedTag: null,
-  characterOffset: 0,
+  fieldTags: {
+    visibleTagEntries: [],
+    highlightedTag: null,
+    characterOffset: 0,
+  },
+  functionTags: {
+    visibleTagEntries: [],
+    highlightedTag: null,
+    characterOffset: 0,
+  },
 }
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'update':
+      return action
+    case 'update_tags_highlighted':
       return {
-        highlightedTag: action.highlightedTag,
-        visibleTagEntries: action.visibleTagEntries,
-        characterOffset: action.characterOffset,
+        ...state,
+        fieldTags: {
+          ...state.fieldTags,
+          highlightedTag: action.highlightedTag,
+        },
       }
-    case 'update_highlighted':
-      return { ...state, highlightedTag: action.highlightedTag }
+    case 'update_functions_highlighted':
+      return {
+        ...state,
+        functionTags: {
+          ...state.functionTags,
+          highlightedTag: action.highlightedTag,
+        },
+      }
     case 'reset':
       return initialState
+    case 'reset_field_tags':
+      return {
+        ...initialState,
+        functionTags: state.functionTags,
+      }
+    case 'reset_function_tags':
+      return {
+        ...initialState,
+        fieldTags: state.fieldTags,
+      }
     default:
       return state
   }
 }
 
 const TagEditor: React.FunctionComponent<Props> = ({
-  tagSource,
+  fieldTagSource,
+  functionTagSource,
   autoHighlight = true,
   autoUpdateHighlight = true,
   onBlur,
@@ -78,36 +127,70 @@ const TagEditor: React.FunctionComponent<Props> = ({
     handleKeyCommand: baseHandleKeyCommand,
   } = baseContext
 
-  const [{ highlightedTag, visibleTagEntries, characterOffset }, dispatch] =
-    useReducer(reducer, initialState)
+  const [{ fieldTags, functionTags }, dispatch] = useReducer(
+    reducer,
+    initialState
+  )
 
   const prevEditorState = useRef(editorState)
 
-  const onShowTags = useCallback(
+  const onShowFieldTags = useCallback(
     (taggables, offset) => {
       if (taggables == null) {
-        dispatch({ type: 'reset' })
+        dispatch({ type: 'reset_field_tags' })
         return
       }
 
-      let highlighted = null
+      let highlightedFieldTag = null
 
-      if (!highlightedTag || autoHighlight) {
+      if (!fieldTags.highlightedTag || autoHighlight) {
         if (autoUpdateHighlight) {
-          highlighted = taggables[0]
+          highlightedFieldTag = taggables[0]
         } else {
-          highlighted = highlightedTag
+          highlightedFieldTag = fieldTags.highlightedTag
         }
       }
 
       dispatch({
         type: 'update',
-        highlightedTag: highlighted,
-        visibleTagEntries: taggables,
-        characterOffset: offset,
+        fieldTags: {
+          highlightedTag: highlightedFieldTag,
+          visibleTagEntries: taggables,
+          characterOffset: offset,
+        },
+        functionTags: { ...functionTags },
       })
     },
-    [autoHighlight, autoUpdateHighlight, highlightedTag]
+    [autoHighlight, autoUpdateHighlight, fieldTags.highlightedTag]
+  )
+
+  const onShowFunctionTags = useCallback(
+    (taggables, offset) => {
+      if (taggables == null) {
+        dispatch({ type: 'reset_function_tags' })
+        return
+      }
+      let highlighted = null
+
+      if (!functionTags.highlightedTag || autoHighlight) {
+        if (autoUpdateHighlight) {
+          highlighted = taggables[0]
+        } else {
+          highlighted = functionTags.highlightedTag
+        }
+      }
+
+      dispatch({
+        type: 'update',
+        fieldTags: { ...fieldTags },
+        functionTags: {
+          highlightedTag: highlighted,
+          visibleTagEntries: taggables,
+          characterOffset: offset,
+        },
+      })
+    },
+    [autoHighlight, autoUpdateHighlight, functionTags.highlightedTag]
   )
 
   useEffect(() => {
@@ -125,53 +208,99 @@ const TagEditor: React.FunctionComponent<Props> = ({
 
     const contentState = editorState.getCurrentContent()
 
-    searchTags(tagSource, selection, contentState, onShowTags)
-  }, [editorState, tagSource, onShowTags])
+    searchFieldTags(fieldTagSource, selection, contentState, onShowFieldTags)
+    searchFunctionTags(
+      functionTagSource,
+      selection,
+      contentState,
+      onShowFunctionTags
+    )
+  }, [
+    editorState,
+    fieldTagSource,
+    functionTagSource,
+    onShowFieldTags,
+    onShowFunctionTags,
+  ])
 
-  const handleTagHighlight = useCallback((tag: TaggableEntry | null) => {
-    dispatch({ type: 'update_highlighted', highlightedTag: tag })
+  const handleFieldTagHighlight = useCallback((tag: TaggableEntry | null) => {
+    dispatch({ type: 'update_tags_highlighted', highlightedTag: tag })
   }, [])
 
-  const moveSelectionUp = () => {
-    if (!visibleTagEntries.length) {
+  const handleFunctionTagHighlight = useCallback(
+    (tag: TaggableEntry | null) => {
+      dispatch({ type: 'update_functions_highlighted', highlightedTag: tag })
+    },
+    []
+  )
+
+  const moveFieldSelectionUp = (tags: TagTypeState) => {
+    if (!tags.visibleTagEntries.length) {
       return
     }
 
-    const length = visibleTagEntries.length
-    const selectedIndex = highlightedTag
-      ? visibleTagEntries.indexOf(highlightedTag)
+    const length = tags.visibleTagEntries.length
+    const selectedIndex = tags.highlightedTag
+      ? tags.visibleTagEntries.indexOf(tags.highlightedTag)
       : 0
 
     let highlighted = null
 
-    if (!highlightedTag) {
-      highlighted = visibleTagEntries[length - 1]
-    } else if (selectedIndex > 0) {
-      highlighted = visibleTagEntries[selectedIndex - 1]
+    if (selectedIndex > 0) {
+      highlighted = tags.visibleTagEntries[selectedIndex - 1]
+    } else {
+      highlighted = tags.visibleTagEntries[length - 1]
     }
 
-    handleTagHighlight(highlighted)
+    if (fieldTags.highlightedTag) handleFieldTagHighlight(highlighted)
+    if (functionTags.highlightedTag)
+      handleFunctionTagHighlight(highlighted as TaggableEntry)
   }
 
-  const moveSelectionDown = () => {
-    if (!visibleTagEntries.length) {
+  // const moveFunctionSelectionUp = (tags: TagTypeState) => {
+  //   if (!tags.visibleTagEntries.length) {
+  //     return
+  //   }
+
+  //   const length = tags.visibleTagEntries.length
+  //   const selectedIndex = tags.highlightedTag
+  //     ? tags.visibleTagEntries.indexOf(tags.highlightedTag)
+  //     : 0
+
+  //   let highlighted = null
+
+  //   if (selectedIndex > 0) {
+  //     highlighted = tags.visibleTagEntries[selectedIndex - 1]
+  //   } else {
+  //     highlighted = tags.visibleTagEntries[length - 1]
+  //   }
+
+  //   if (fieldTags.highlightedTag) handleFieldTagHighlight(highlighted)
+  //   if (functionTags.highlightedTag)
+  //     handleFunctionTagHighlight(highlighted as TaggableEntry)
+  // }
+
+  const moveSelectionDown = (tags: TagTypeState) => {
+    if (!tags.visibleTagEntries.length) {
       return
     }
 
-    const length = visibleTagEntries.length
-    const selectedIndex = highlightedTag
-      ? visibleTagEntries.indexOf(highlightedTag)
+    const length = tags.visibleTagEntries.length
+    const selectedIndex = tags.highlightedTag
+      ? tags.visibleTagEntries.indexOf(tags.highlightedTag)
       : 0
 
     let highlighted = null
 
-    if (!highlightedTag) {
-      highlighted = visibleTagEntries[0]
-    } else if (selectedIndex < length - 1) {
-      highlighted = visibleTagEntries[selectedIndex + 1]
+    if (selectedIndex < length - 1) {
+      highlighted = tags.visibleTagEntries[selectedIndex + 1]
+    } else {
+      highlighted = tags.visibleTagEntries[0]
     }
 
-    handleTagHighlight(highlighted)
+    if (fieldTags.highlightedTag) handleFieldTagHighlight(highlighted)
+    if (functionTags.highlightedTag)
+      handleFunctionTagHighlight(highlighted as TaggableEntry)
   }
 
   const handleBlur = (evt: React.FocusEvent) => {
@@ -179,26 +308,47 @@ const TagEditor: React.FunctionComponent<Props> = ({
     onBlur?.(evt)
   }
 
-  const handleTagSelect = useCallback(
+  const handleFieldTagSelect = useCallback(
     (tag: TaggableEntry) => {
       const editorWithTags = replaceTagInEditorState(
         tag,
         editorState,
-        characterOffset
+        fieldTags.characterOffset,
+        TAG_TYPE.TAG
       )
 
       onChange(editorWithTags)
       dispatch({ type: 'reset' })
     },
-    [characterOffset, editorState, onChange]
+    [fieldTags.characterOffset, editorState, onChange]
+  )
+
+  // Open popup on click and after that gather required data and then replace function editor
+
+  const handleFunctionTagSelect = useCallback(
+    (tag: TaggableEntry) => {
+      const editorWithTags = replaceFunctionInEditorState(
+        tag,
+        editorState,
+        functionTags.characterOffset,
+        TAG_TYPE.FUNCTION
+      )
+
+      onChange(editorWithTags)
+      dispatch({ type: 'reset' })
+    },
+    [functionTags.characterOffset, editorState, onChange]
   )
 
   const handleReturn = (
     evt: React.KeyboardEvent,
     editorState: EditorState
   ): DraftHandleValue => {
-    if (highlightedTag) {
-      handleTagSelect(highlightedTag)
+    if (fieldTags.highlightedTag) {
+      handleFieldTagSelect(fieldTags.highlightedTag)
+      return 'handled'
+    } else if (functionTags.highlightedTag) {
+      handleFunctionTagSelect(functionTags.highlightedTag)
       return 'handled'
     } else if (handleContentReturn) {
       return handleContentReturn(evt, editorState)
@@ -206,10 +356,11 @@ const TagEditor: React.FunctionComponent<Props> = ({
     return 'not-handled'
   }
 
-  const showingTags = !!visibleTagEntries?.length
+  const showingTags = !!fieldTags.visibleTagEntries?.length
+  const showingFunctionTags = !!functionTags.visibleTagEntries?.length
 
   const keyBinder = (e: React.KeyboardEvent) => {
-    if (showingTags) {
+    if (showingTags || showingFunctionTags) {
       if (e.keyCode === KeyCode.KEY_TAB) {
         return 'handle-autocomplete'
       } else if (e.keyCode === KeyCode.KEY_ESCAPE) {
@@ -231,21 +382,28 @@ const TagEditor: React.FunctionComponent<Props> = ({
   ): DraftHandleValue => {
     switch (command) {
       case 'handle-autocomplete':
-        if (highlightedTag) {
-          handleTagSelect(highlightedTag)
+        if (fieldTags.highlightedTag) {
+          handleFieldTagSelect(fieldTags.highlightedTag)
         }
-
+        if (functionTags.highlightedTag) {
+          handleFunctionTagSelect(functionTags.highlightedTag)
+        }
         return 'handled'
       case 'cancel-autocomplete':
-        if (visibleTagEntries.length) {
-          dispatch({ type: 'reset' })
+        if (fieldTags.visibleTagEntries.length) {
+          dispatch({ type: 'reset_field_tags' })
+        }
+        if (functionTags.visibleTagEntries.length) {
+          dispatch({ type: 'reset_function_tags' })
         }
         return 'handled'
       case 'move-selection-up':
-        moveSelectionUp()
+        if (fieldTags.highlightedTag) moveFieldSelectionUp(fieldTags)
+        if (functionTags.highlightedTag) moveFieldSelectionUp(functionTags)
         return 'handled'
       case 'move-selection-down':
-        moveSelectionDown()
+        if (fieldTags.highlightedTag) moveSelectionDown(fieldTags)
+        if (functionTags.highlightedTag) moveSelectionDown(functionTags)
         return 'handled'
       default: {
         return (
@@ -264,6 +422,9 @@ const TagEditor: React.FunctionComponent<Props> = ({
 
   return (
     <div className={classnames(styles.editor, 'bg-editor')}>
+      {/* <p>{JSON.stringify(functionTags)}</p> */}
+      <p>editorState: {JSON.stringify(editorState.getCurrentContent())}</p>
+
       <Editor
         {...props}
         placeholder={placeholder}
@@ -278,14 +439,32 @@ const TagEditor: React.FunctionComponent<Props> = ({
         handleKeyCommand={handleKeyCommand}
         keyBindingFn={keyBinder}
         blockStyleFn={blockStyleFn}
+        // blockRendererFn={}
       />
+
       <TagsPopup
-        tagEntries={visibleTagEntries}
+        tagEntries={fieldTags.visibleTagEntries}
         selection={editorState.getSelection()}
-        onTagSelect={handleTagSelect}
-        onTagHighlight={handleTagHighlight}
-        characterOffset={characterOffset}
-        highlightedTag={highlightedTag}
+        onTagSelect={handleFieldTagSelect}
+        onTagHighlight={handleFieldTagHighlight}
+        characterOffset={fieldTags.characterOffset}
+        highlightedTag={fieldTags.highlightedTag}
+      />
+      {/* <FunctionsPopup
+        tagEntries={functionTags.visibleTagEntries}
+        selection={editorState.getSelection()}
+        onTagSelect={handleFunctionTagSelect}
+        onTagHighlight={handleFunctionTagHighlight}
+        characterOffset={functionTags.characterOffset}
+        highlightedTag={functionTags.highlightedTag}
+      /> */}
+      <TagsPopup
+        tagEntries={functionTags.visibleTagEntries}
+        selection={editorState.getSelection()}
+        onTagSelect={handleFunctionTagSelect}
+        onTagHighlight={handleFunctionTagHighlight}
+        characterOffset={functionTags.characterOffset}
+        highlightedTag={functionTags.highlightedTag}
       />
     </div>
   )

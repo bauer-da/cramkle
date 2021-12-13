@@ -8,8 +8,13 @@ import type { ModelQuery_model_templates_frontSide as TemplateContent } from '..
 import BaseEditorControls from './editor/BaseEditorControls'
 import TagEditor from './editor/TagEditor'
 import { decorators as tagsDecorators } from './editor/TagsPopup'
+// import { decorators as functionDecorators } from './editor/FunctionsPopup'
+import { TEMPLATE_FUNCTIONS } from './editor/constants'
 
-const decorators = new CompositeDecorator(tagsDecorators)
+const decorators = new CompositeDecorator([
+  ...tagsDecorators,
+  // ...functionDecorators,
+])
 
 interface Props {
   id: string
@@ -44,7 +49,10 @@ const TemplateEditor: React.FunctionComponent<Props> = ({
       initialContentState={initialContentState as RawDraftContentState}
       decorators={decorators}
     >
-      <TagEditor tagSource={fields} />
+      <TagEditor
+        fieldTagSource={fields}
+        functionTagSource={TEMPLATE_FUNCTIONS}
+      />
     </BaseEditorControls>
   )
 }

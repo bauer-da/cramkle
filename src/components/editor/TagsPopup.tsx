@@ -6,12 +6,17 @@ import TypeaheadView from '../views/TypeaheadView'
 import TagSpan from './TagSpan'
 import type { TaggableEntry } from './TaggableEntry'
 import getSelectionRect from './getSelectionRect'
-import { findTagEntities } from './strategies'
+import { findFunctionEntities, findTagEntities } from './strategies'
+import FunctionSpan from './voice/VoiceSpan'
 
 export const decorators = [
   {
     strategy: findTagEntities,
     component: TagSpan,
+  },
+  {
+    strategy: findFunctionEntities,
+    component: FunctionSpan,
   },
 ]
 

@@ -14,8 +14,10 @@ import * as React from 'react'
 import styles from './FlashCardRenderer.module.css'
 import { blockStyleFn } from './editor/BlockStyleControls'
 import { findTagEntities } from './editor/strategies'
+// import { findFunctionEntities, findTagEntities } from './editor/strategies'
 import { Divider } from './views/Divider'
 import { Body2, Caption } from './views/Typography'
+// import FunctionSpan from './editor/FunctionSpan'
 
 interface NoteValue {
   data: RawDraftContentState
@@ -73,6 +75,10 @@ const decorators = new CompositeDecorator([
     strategy: findTagEntities,
     component: FlashCardValue,
   },
+  // {
+  //   strategy: findFunctionEntities,
+  //   component: FunctionSpan,
+  // },
 ])
 
 interface PanelProps {

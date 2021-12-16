@@ -4,6 +4,7 @@ import * as React from 'react'
 import type { TaggableEntry } from './TaggableEntry'
 import TemplateEditorFunctionButton from './TemplateEditorFunctionButton'
 import { FUNCTION_TAG_TYPE } from './constants'
+import TextInputForm from './forms/TextInputForm'
 import TextToSpeechForm from './forms/TextToSpeechForm'
 
 const InlineFunctionControls: React.FunctionComponent<{
@@ -23,10 +24,22 @@ const InlineFunctionControls: React.FunctionComponent<{
         setOpenFormType={setOpenFormType}
         entityType={FUNCTION_TAG_TYPE.TEXT_TO_SPEECH}
       />
+      <TemplateEditorFunctionButton
+        key={FUNCTION_TAG_TYPE.TEXT_INPUT}
+        label={t`Text Input`}
+        setOpenFormType={setOpenFormType}
+        entityType={FUNCTION_TAG_TYPE.TEXT_INPUT}
+      />
 
       <TextToSpeechForm
         fields={fields}
         open={openFormType == FUNCTION_TAG_TYPE.TEXT_TO_SPEECH}
+        onClose={() => setOpenFormType(undefined)}
+        handleFunction={handleFunction}
+      />
+      <TextInputForm
+        fields={fields}
+        open={openFormType == FUNCTION_TAG_TYPE.TEXT_INPUT}
         onClose={() => setOpenFormType(undefined)}
         handleFunction={handleFunction}
       />

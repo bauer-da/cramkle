@@ -32,3 +32,18 @@ export const findTextToSpeechEntities = (
     )
   }, callback)
 }
+
+export const findTextInputEntities = (
+  contentBlock: ContentBlock,
+  callback: Callback,
+  contentState: ContentState
+) => {
+  contentBlock.findEntityRanges((character) => {
+    const entityKey = character.getEntity()
+    return (
+      entityKey !== null &&
+      contentState.getEntity(entityKey).getType() ===
+        FUNCTION_TAG_TYPE.TEXT_INPUT
+    )
+  }, callback)
+}

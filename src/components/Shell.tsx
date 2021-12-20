@@ -19,6 +19,7 @@ import { LogoutIcon } from './icons/LogoutIcon'
 import { OverflowMenuIcon } from './icons/OverflowMenuIcon'
 import { SettingsIcon } from './icons/SettingsIcon'
 import { StatisticsIcon } from './icons/StatisticsIcon'
+import { MarketplaceIcon } from './icons/MarketplaceIcon'
 import {
   AlertDialog,
   AlertDialogDescription,
@@ -155,6 +156,7 @@ const MobileMenu: React.FC = () => {
   const navigate = useNavigate()
 
   const handleStatisticsClick = () => navigate('/statistics')
+  const handleMarketplaceClick = () => navigate('/marketplace')
 
   return (
     <Menu>
@@ -175,6 +177,14 @@ const MobileMenu: React.FC = () => {
             }
           >
             <Trans>Statistics</Trans>
+          </MenuItem>
+          <MenuItem
+            onSelect={handleMarketplaceClick}
+            icon={
+              <MarketplaceIcon className="text-txt text-opacity-text-secondary" />
+            }
+          >
+            <Trans>Marketplace</Trans>
           </MenuItem>
           <Divider className="my-3" />
           <DefaultMenuItems />

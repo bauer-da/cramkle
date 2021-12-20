@@ -169,7 +169,7 @@ const LandingPage: React.VFC = () => {
             </p>
           </div>
           <div className="px-4 sm:px-6 md:px-8 mb-10 sm:mb-16 md:mb-20">
-            <p className="text-transparent bg-clip-text bg-gradient-to-b from-primary-dark to-txt text-3xl sm:text-5xl lg:text-6xl leading-tight py-1 font-extrabold tracking-tight mb-8">
+            <p className="text-transparent bg-clip-text bg-gradient-to-b from-primary-dark to-txt-secondary text-3xl sm:text-5xl lg:text-6xl leading-tight py-1 font-extrabold tracking-tight mb-8">
               <Trans>Start studying now, anonymously</Trans>
             </p>
             <p className="text-txt-secondary max-w-4xl text-lg sm:text-2xl font-medium sm:leading-10">

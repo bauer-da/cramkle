@@ -22,8 +22,8 @@ import {
 import { VolumeUpIcon } from './icons/VolumeUpIcon'
 import { Button } from './views/Button'
 import { Divider } from './views/Divider'
-import { Body2, Caption } from './views/Typography'
 import TextInputFunction from './views/TextInputFunction'
+import { Body2, Caption } from './views/Typography'
 
 export interface NoteValue {
   data: RawDraftContentState

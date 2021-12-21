@@ -35,7 +35,7 @@ const HomePageSidebar: FC<{ className?: string }> = ({ className }) => {
         </ListItem>
       </List>
 
-      <footer className="max-w-xs mx-auto mt-10 px-8 flex justify-between items-center text-txt text-opacity-text-secondary text-xs">
+      {/* <footer className="max-w-xs mx-auto mt-10 px-8 flex justify-between items-center text-txt text-opacity-text-secondary text-xs">
         <Link to="/about">
           <Trans>About us</Trans>
         </Link>
@@ -59,7 +59,7 @@ const HomePageSidebar: FC<{ className?: string }> = ({ className }) => {
         >
           GitHub
         </a>
-      </footer>
+      </footer> */}
     </nav>
   )
 }

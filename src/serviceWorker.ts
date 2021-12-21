@@ -79,5 +79,5 @@ registerRoute(
 )
 
 if (process.env.NODE_ENV !== 'development') {
-  registerRoute(/^https:\/\/(www\.)?cramkle\.com/, new NetworkFirst())
+  registerRoute(/^https:\/\/(www\.)?vocabulapp\.com/, new NetworkFirst())
 }

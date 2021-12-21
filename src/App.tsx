@@ -30,17 +30,17 @@ const App: FC<{
         <ApolloProvider client={apolloClient}>
           <HintsProvider userAgent={userAgent}>
             <Helmet
-              defaultTitle="Cramkle"
-              titleTemplate="%s - Cramkle"
+              defaultTitle="Vocabulapp"
+              titleTemplate="%s - Vocabulapp"
               meta={[
                 {
                   name: 'application-name',
-                  content: 'Cramkle',
+                  content: 'Vocabulapp',
                 },
                 {
                   name: 'description',
                   content:
-                    'Cramkle helps you boost your knowledge rentention with an ' +
+                    'Vocabulapp helps you boost your knowledge rentention with an ' +
                     'effective flashcard-based studying method, and SRS algorithm.',
                 },
                 {

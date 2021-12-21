@@ -1336,8 +1336,8 @@ msgid "When you create a note, we will create the corresponding number of flashc
 msgstr "Quando você criar uma nota, nós iremos criar o número correspondente de flashcards baseado em quantos templates o modelo possui, e iremos utilizar os valores da nota para preencher o template."
 
 #: src/pages/LandingPage.tsx:136
-msgid "With Cramkle you don't need to create an account to start studying, use the anonymous login to get a feel for the app and fill in your personal information later when you're comfortable to do so."
-msgstr "Com o Cramkle você não precisa criar uma conta para começar a estudar, use o login anônimo e veja o que temos a oferecer e depois preencha suas informações pessoais quando se sentir confortável."
+msgid "With Vocabulapp you don't need to create an account to start studying, use the anonymous login to get a feel for the app and fill in your personal information later when you're comfortable to do so."
+msgstr "Com o Vocabulapp você não precisa criar uma conta para começar a estudar, use o login anônimo e veja o que temos a oferecer e depois preencha suas informações pessoais quando se sentir confortável."
 
 #: src/pages/HomePage.tsx:122
 msgid "You are using an <0>anonymous account</0>, to persist your study history and created decks and flashcards, fill your profile info in the settings page."
@@ -1368,12 +1368,12 @@ msgid "You haven't created any templates on this model yet."
 msgstr "Você ainda não criou nenhum template neste modelo."
 
 #: src/components/PublishDeckButton.tsx:100
-msgid "You will <0>stop sharing</0> this deck publicly with all Cramkle users via the Marketplace."
-msgstr "Você vai <0>parar de compartilhar</0> esse deck publicamente com todos os usuários do Cramkle pelo Marketplace."
+msgid "You will <0>stop sharing</0> this deck publicly with all Vocabulapp users via the Marketplace."
+msgstr "Você vai <0>parar de compartilhar</0> esse deck publicamente com todos os usuários do Vocabulapp pelo Marketplace."
 
 #: src/components/PublishDeckButton.tsx:78
-msgid "You will share this deck publicly with all Cramkle users via the Marketplace. Be careful with sensitive or personal information in your deck."
-msgstr "Você vai compartilhar esse deck publicamente com todos os usuários do Cramkle pelo Marketplace. Tenha cuidado com dados sensíveis ou pessoais nesse deck."
+msgid "You will share this deck publicly with all Vocabulapp users via the Marketplace. Be careful with sensitive or personal information in your deck."
+msgstr "Você vai compartilhar esse deck publicamente com todos os usuários do Vocabulapp pelo Marketplace. Tenha cuidado com dados sensíveis ou pessoais nesse deck."
 
 #: src/pages/StudySection.tsx:91
 msgid "You've finished studying your decks for now."
@@ -1419,7 +1419,7 @@ msgstr "ou"
 
 #: src/pages/LandingPage.tsx:104
 msgid "product-description"
-msgstr "Cramkle é uma plataforma de estudos baseada em flashcards, onde você pode agrupar matérias em decks, que automaticamente agenda sessões de estudos usando um algoritmo de repetição espaçada para maximizar sua retenção de conhecimento"
+msgstr "Vocabulapp é uma plataforma de estudos baseada em flashcards, onde você pode agrupar matérias em decks, que automaticamente agenda sessões de estudos usando um algoritmo de repetição espaçada para maximizar sua retenção de conhecimento"
 
 #: src/components/ModelCard.tsx:27
 msgid "{0, plural, one {# field} other {# fields}}"

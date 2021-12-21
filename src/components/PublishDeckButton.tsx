@@ -118,7 +118,7 @@ const PublishDialog: React.FC<PublishDialogProps> = ({
       </AlertDialogLabel>
       <AlertDialogDescription>
         <Trans>
-          You will share this deck publicly with all Cramkle users via the
+          You will share this deck publicly with all Vocabulapp users via the
           Marketplace. Be careful with sensitive or personal information in your
           deck.
         </Trans>
@@ -157,7 +157,7 @@ const UnpublishDialog: React.FC<UnpublishDialogProps> = ({
       <AlertDialogDescription>
         <Trans>
           You will <span className="font-bold">stop sharing</span> this deck
-          publicly with all Cramkle users via the Marketplace.
+          publicly with all Vocabulapp users via the Marketplace.
         </Trans>
       </AlertDialogDescription>
       <div className="flex flex-col sm:flex-row flex-wrap justify-end items-stretch sm:items-center">

@@ -74,10 +74,10 @@ app.get('/healthz', (_, res) => {
 app.use(
   '/_c',
   createProxyMiddleware({
-    target: 'http://hipocampo:5000',
+    target: 'http://localhost:5000',
     changeOrigin: true,
     cookieDomainRewrite: {
-      'http://hipocampo:5000': 'http://cramkle:3000',
+      'http://localhost:5000': 'http://localhost:3000',
     },
     logLevel: 'silent',
   })
@@ -85,7 +85,7 @@ app.use(
 
 app.use(
   requestLanguage({
-    languages: ['en', 'pt'],
+    languages: ['en', 'pt', 'es'],
     cookie: {
       name: 'language',
     },

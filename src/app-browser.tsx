@@ -3,7 +3,11 @@
 
 import { RootBrowser } from '@casterly/components/browser'
 import { i18n } from '@lingui/core'
-import { en as enPlural, pt as ptPlural } from 'make-plural/plurals'
+import {
+  en as enPlural,
+  es as esPlural,
+  pt as ptPlural,
+} from 'make-plural/plurals'
 import type { ReactElement } from 'react'
 import ReactDOM from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
@@ -24,7 +28,11 @@ declare module 'react-dom' {
 const cookies = new Cookies()
 const language = cookies.get('language') || 'en'
 
-i18n.loadLocaleData({ en: { plurals: enPlural }, pt: { plurals: ptPlural } })
+i18n.loadLocaleData({
+  en: { plurals: enPlural },
+  pt: { plurals: ptPlural },
+  es: { plurals: esPlural },
+})
 
 const apolloClient = createApolloClient('/_c/graphql')
 

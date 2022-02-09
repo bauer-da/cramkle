@@ -1,6 +1,6 @@
 {
-  "short_name": "Cramkle",
-  "name": "Cramkle",
+  "short_name": "Vocabulapp",
+  "name": "Vocabulapp",
   "start_url": "/?utm_source=homescreen&utm_medium=shortcut",
   "display": "standalone",
   "theme_color": "#ffffff",

@@ -12,7 +12,7 @@ export const AppName: React.FC<React.HTMLAttributes<HTMLSpanElement>> = (
         'text-txt text-opacity-text-primary text-lg font-medium tracking-wide'
       )}
     >
-      Cramkle
+      Vocabulapp
     </span>
   )
 }

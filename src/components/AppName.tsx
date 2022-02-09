@@ -9,7 +9,7 @@ export const AppName: React.FC<React.HTMLAttributes<HTMLSpanElement>> = (
       {...props}
       className={classnames(
         props.className,
-        'text-txt text-opacity-text-primary text-lg font-medium tracking-wide'
+        'text-txt text-opacity-text-primary text-xl font-medium tracking-wide antialiased'
       )}
     >
       Vocabulapp

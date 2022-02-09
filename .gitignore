@@ -108,6 +108,9 @@ jspm_packages/
 [._]ss[a-gi-z]
 [._]sw[a-p]
 
+### vs code ###
+.vscode/*
+
 # Session
 Session.vim
 
@@ -138,4 +141,3 @@ src/locales/_build/
 src/locales/**/*.js
 src/locales/**/*.ts
 !src/locales/**/*.d.ts
-settings.json

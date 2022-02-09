@@ -5,13 +5,27 @@ import Portal from '../Portal'
 import TypeaheadView from '../views/TypeaheadView'
 import TagSpan from './TagSpan'
 import type { TaggableEntry } from './TaggableEntry'
+import TextInputSpan from './TextInputSpan'
+import TextToSpeechPlayer from './TextToSpeechPlayer'
 import getSelectionRect from './getSelectionRect'
-import { findTagEntities } from './strategies'
+import {
+  findTagEntities,
+  findTextInputEntities,
+  findTextToSpeechEntities,
+} from './strategies'
 
 export const decorators = [
   {
     strategy: findTagEntities,
     component: TagSpan,
+  },
+  {
+    strategy: findTextToSpeechEntities,
+    component: TextToSpeechPlayer,
+  },
+  {
+    strategy: findTextInputEntities,
+    component: TextInputSpan,
   },
 ]
 

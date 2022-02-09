@@ -16,6 +16,7 @@ import { useCurrentUser } from './UserContext'
 import { AnonymousIcon } from './icons/AnonymousIcon'
 import { DarkModeIcon } from './icons/DarkModeIcon'
 import { LogoutIcon } from './icons/LogoutIcon'
+import { MarketplaceIcon } from './icons/MarketplaceIcon'
 import { OverflowMenuIcon } from './icons/OverflowMenuIcon'
 import { SettingsIcon } from './icons/SettingsIcon'
 import { StatisticsIcon } from './icons/StatisticsIcon'
@@ -155,6 +156,7 @@ const MobileMenu: React.FC = () => {
   const navigate = useNavigate()
 
   const handleStatisticsClick = () => navigate('/statistics')
+  const handleMarketplaceClick = () => navigate('/marketplace')
 
   return (
     <Menu>
@@ -175,6 +177,14 @@ const MobileMenu: React.FC = () => {
             }
           >
             <Trans>Statistics</Trans>
+          </MenuItem>
+          <MenuItem
+            onSelect={handleMarketplaceClick}
+            icon={
+              <MarketplaceIcon className="text-txt text-opacity-text-secondary" />
+            }
+          >
+            <Trans>Marketplace</Trans>
           </MenuItem>
           <Divider className="my-3" />
           <DefaultMenuItems />
@@ -222,7 +232,7 @@ const Shell: React.FC = ({ children }) => {
           <HeaderContent>
             <HeaderSection>
               <Link className="flex items-center pl-1 link" to="/">
-                {!isOffline ? <Logo width="32" /> : <LogoGray width="32" />}
+                {!isOffline ? <Logo width="40" /> : <LogoGray width="40" />}
                 <AppName className="ml-2" />
               </Link>
             </HeaderSection>

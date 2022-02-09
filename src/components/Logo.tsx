@@ -4,8 +4,8 @@ export const Logo: VFC<SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       {...props}
-      viewBox="0 0 128 128"
       version="1.1"
+      viewBox="0 0 96.191 110.843"
       xmlns="http://www.w3.org/2000/svg"
     >
       <g

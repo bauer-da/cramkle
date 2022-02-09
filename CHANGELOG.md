@@ -6,10 +6,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [0.19.1] - 2021-11-16
+## [0.19.0] - 2021-12-13
 ### Added
 - Edit deck button.
 - Edit model button.
+- Marketplace page.
 
 ### Changed
 - Merge single page and landing page into a single route `/`.
@@ -465,7 +466,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Hydration logic on production environment
 
 
-[Unreleased]: https://github.com/bauer-da/cramkle/compare/v0.19.1...HEAD
+[Unreleased]: https://github.com/cramkle/cramkle/compare/v0.19.0...HEAD
+[0.19.0]: https://github.com/cramkle/cramkle/compare/v0.18.0...v0.19.0
 [0.18.0]: https://github.com/cramkle/cramkle/compare/v0.17.0...v0.18.0
 [0.17.0]: https://github.com/cramkle/cramkle/compare/v0.16.0...v0.17.0
 [0.16.0]: https://github.com/cramkle/cramkle/compare/v0.15.2...v0.16.0
@@ -474,5 +476,3 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 [0.15.0]: https://github.com/cramkle/cramkle/compare/v0.14.1...v0.15.0
 [0.14.1]: https://github.com/cramkle/cramkle/compare/v0.14.0...v0.14.1
 [0.14.0]: https://github.com/cramkle/cramkle/compare/v0.13.6...v0.14.0
-
-[0.19.1]: https://github.com/bauer-da/cramkle/compare/v0.19.0...v0.19.1

@@ -15,6 +15,10 @@ export default [
         component: () => import('./pages/DecksSection'),
         path: 'decks',
       },
+      {
+        component: () => import('./pages/ModelsSection'),
+        path: 'models',
+      },
     ],
   },
   {
@@ -56,12 +60,24 @@ export default [
             path: '/d/:slug',
           },
           {
+            component: () => import('./pages/PublishedDeckPage'),
+            path: '/marketplace/d/:slug',
+          },
+          {
             component: () => import('./pages/AddNotePage'),
             path: '/d/:slug/new-note',
           },
           {
             component: () => import('./pages/NotePage'),
             path: '/d/:slug/note/:noteId',
+          },
+          {
+            component: () => import('./pages/AddModelPage'),
+            path: '/models/create',
+          },
+          {
+            component: () => import('./pages/ModelPage'),
+            path: '/m/:id',
           },
           {
             component: () => import('./pages/SettingsPage'),
@@ -80,6 +96,10 @@ export default [
           {
             component: () => import('./pages/StatisticsPage'),
             path: '/statistics',
+          },
+          {
+            component: () => import('./pages/MarketplacePage'),
+            path: '/marketplace',
           },
         ],
       },

@@ -29,9 +29,9 @@ export const Footer: VFC = () => {
     <footer className="w-full py-8 px-4 sm:px-6 md:px-8 lg:px-32 flex flex-col-reverse md:flex-row bg-surface">
       <div className="flex flex-col mt-4 md:mt-0">
         <Overline className="md:leading-tight text-txt text-opacity-text-primary">
-          &copy; {new Date().getFullYear()} Vocabulapp.
+          &copy; {new Date().getFullYear()} Vocabulapp, by Bauer.
         </Overline>
-        <ul className="list-reset mt-4 flex">
+        {/* <ul className="list-reset mt-4 flex">
           <li>
             <a
               className="inline-block p-3"
@@ -58,7 +58,7 @@ export const Footer: VFC = () => {
               />
             </a>
           </li>
-        </ul>
+        </ul> */}
       </div>
       <div className="md:ml-16">
         <Subtitle2 className="leading-tight text-txt text-opacity-text-primary">

@@ -3,9 +3,24 @@ import type { MemoryHistory } from 'history'
 import { createMemoryHistory } from 'history'
 import { Route, Routes } from 'react-router'
 
+import { UserContext } from '../../components/UserContext'
 import { render } from '../../test/utils'
 import DeckPage, { DECK_QUERY } from '../DeckPage'
 import type { DeckQuery } from '../__generated__/DeckQuery'
+
+const userFixture = {
+  __typename: 'User' as const,
+  id: 'abc123',
+  username: 'user',
+  email: 'user@email.com',
+  anonymous: false,
+  preferences: {
+    darkMode: false,
+    locale: 'en',
+    zoneInfo: 'UTC',
+    __typename: 'UserPreferences' as const,
+  },
+}
 
 const deckQueryResultForPage = ({
   page,
@@ -23,6 +38,8 @@ const deckQueryResultForPage = ({
       description: '',
       totalNotes: 2,
       totalFlashcards: 2,
+      published: false,
+      originalDeck: null,
       notes: {
         __typename: 'NoteConnection',
         totalCount: empty ? 0 : 1,
@@ -91,9 +108,11 @@ describe('DeckPage', () => {
     history.push('/d/deck-1?page=1&size=1')
 
     const { getByText, queryByText } = render(
-      <Routes>
-        <Route path="/d/:slug" element={<DeckPage />} />
-      </Routes>,
+      <UserContext user={userFixture}>
+        <Routes>
+          <Route path="/d/:slug" element={<DeckPage />} />
+        </Routes>
+      </UserContext>,
       {
         history,
         mocks: [
@@ -154,9 +173,11 @@ describe('DeckPage', () => {
     history.push('/d/deck-1?page=1&size=1&search=my search')
 
     const { getByText, queryByText } = render(
-      <Routes>
-        <Route path="/d/:slug" element={<DeckPage />} />
-      </Routes>,
+      <UserContext user={userFixture}>
+        <Routes>
+          <Route path="/d/:slug" element={<DeckPage />} />
+        </Routes>
+      </UserContext>,
       {
         history,
         mocks: [
@@ -199,9 +220,11 @@ describe('DeckPage', () => {
     history.push('/d/deck-1')
 
     const { getByText, queryByText } = render(
-      <Routes>
-        <Route path="/d/:slug" element={<DeckPage />} />
-      </Routes>,
+      <UserContext user={userFixture}>
+        <Routes>
+          <Route path="/d/:slug" element={<DeckPage />} />
+        </Routes>
+      </UserContext>,
       {
         history,
         mocks: [

@@ -5,9 +5,9 @@ import Shell from '../components/Shell'
 import { UserContext } from '../components/UserContext'
 import type { UserQuery } from '../components/__generated__/UserQuery'
 import USER_QUERY from '../components/userQuery.gql'
+import LoginPage from './LoginPage'
 
 const HomePage = lazy(() => import('./HomePage'))
-const LandingPage = lazy(() => import('./LandingPage'))
 
 export default function IndexPage() {
   const { data, loading } = useQuery<UserQuery>(USER_QUERY, {
@@ -31,7 +31,7 @@ export default function IndexPage() {
   } else {
     content = (
       <Suspense fallback="loading">
-        <LandingPage />
+        <LoginPage />
       </Suspense>
     )
   }

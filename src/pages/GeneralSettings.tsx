@@ -40,6 +40,10 @@ const OPTIONS = [
     locale: 'pt',
     label: t`Portuguese`,
   },
+  {
+    locale: 'es',
+    label: t`Spanish`,
+  },
 ]
 
 const UPDATE_PREFERENCES_MUTATION = gql`

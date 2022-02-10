@@ -42,7 +42,7 @@ msgstr "Um modelo consiste tanto de campos quanto templates. Um campo é utiliza
 msgid "A new update is available!"
 msgstr "Uma nova atualização está disponível!"
 
-#: src/components/Footer.tsx:9
+#: src/components/Footer.tsx:7
 #: src/pages/AboutPage.tsx:9
 msgid "About"
 msgstr "Sobre"
@@ -50,10 +50,6 @@ msgstr "Sobre"
 #: src/pages/AboutPage.tsx:10
 msgid "About our mission and values, read more"
 msgstr "Sobre nossa missão e valores, leia mais"
-
-#: src/components/HomePageSidebar.tsx:36
-msgid "About us"
-msgstr "Sobre nós"
 
 #: src/components/forms/RegisterForm.tsx:107
 msgid "Account created successfully"
@@ -149,7 +145,7 @@ msgstr "Ocorreu um erro ao atualizar o deck"
 
 #: src/components/UpdatePasswordDialog.tsx:67
 #: src/components/UpdatePasswordDialog.tsx:72
-#: src/pages/GeneralSettings.tsx:90
+#: src/pages/GeneralSettings.tsx:94
 msgid "An unexpected error has occurred"
 msgstr "Ocorreu um erro inesperado"
 
@@ -259,7 +255,7 @@ msgstr "Escolha uma nova senha para sua conta."
 msgid "Code Block"
 msgstr "Bloco de código"
 
-#: src/components/Footer.tsx:43
+#: src/components/Footer.tsx:57
 msgid "Company"
 msgstr "Empresa"
 
@@ -594,10 +590,6 @@ msgstr "Frente"
 msgid "Front side template is empty"
 msgstr "Frente do template está vazio"
 
-#: src/components/Footer.tsx:31
-msgid "GitHub"
-msgstr "GitHub"
-
 #: src/components/BackButton.tsx:9
 msgid "Go back"
 msgstr "Voltar"
@@ -702,7 +694,7 @@ msgstr "Itálico"
 msgid "Items per page"
 msgstr "Itens por página"
 
-#: src/pages/GeneralSettings.tsx:101
+#: src/pages/GeneralSettings.tsx:105
 msgid "Language"
 msgstr "Idioma"
 
@@ -751,7 +743,7 @@ msgstr "Sair e apagar conta"
 msgid "Make sure your knowledge will last"
 msgstr "Garanta que seu conhecimento irá durar"
 
-#: src/components/HomePageSidebar.tsx:25
+#: src/components/HomePageSidebar.tsx:24
 #: src/components/Shell.tsx:123
 #: src/pages/MarketplacePage.tsx:78
 msgid "Marketplace"
@@ -915,7 +907,7 @@ msgstr "Por favor, tente recarregar a página"
 msgid "Portuguese"
 msgstr "Português"
 
-#: src/pages/GeneralSettings.tsx:93
+#: src/pages/GeneralSettings.tsx:97
 msgid "Preferences updated successfully"
 msgstr "Preferências atualizadas com sucesso"
 
@@ -927,11 +919,11 @@ msgstr "Pré-visualizar"
 msgid "Previous page"
 msgstr "Página anterior"
 
-#: src/components/Footer.tsx:17
+#: src/components/Footer.tsx:15
 msgid "Privacy Policy"
 msgstr "Política de Privacidade"
 
-#: src/components/HomePageSidebar.tsx:21
+#: src/components/HomePageSidebar.tsx:20
 msgid "Profile"
 msgstr "Perfil"
 
@@ -1015,7 +1007,7 @@ msgstr "Tentar novamente"
 msgid "Review"
 msgstr "Revisão"
 
-#: src/pages/GeneralSettings.tsx:142
+#: src/pages/GeneralSettings.tsx:146
 msgid "Save preferences"
 msgstr "Salvar preferências"
 
@@ -1049,7 +1041,7 @@ msgstr "Selecione um modelo"
 msgid "Select your deck"
 msgstr "Selecione seu deck"
 
-#: src/components/HomePageSidebar.tsx:18
+#: src/components/HomePageSidebar.tsx:17
 #: src/components/Shell.tsx:74
 #: src/pages/SettingsPage.tsx:23
 #: src/pages/SettingsPage.tsx:26
@@ -1077,6 +1069,10 @@ msgstr "Simples para os que querem, poderoso para os que precisam"
 msgid "Something went wrong"
 msgstr "Algo de errado aconteceu"
 
+#: src/pages/GeneralSettings.tsx:43
+msgid "Spanish"
+msgstr ""
+
 #: src/pages/StudySection.tsx:78
 msgid "Start Session"
 msgstr "Começar sessão"
@@ -1085,7 +1081,7 @@ msgstr "Começar sessão"
 msgid "Start studying now, anonymously"
 msgstr "Começe a estudar agora, anonimamente"
 
-#: src/components/HomePageSidebar.tsx:15
+#: src/components/HomePageSidebar.tsx:14
 #: src/components/Shell.tsx:120
 msgid "Statistics"
 msgstr "Estatísticas"
@@ -1142,7 +1138,7 @@ msgstr "Templates"
 msgid "Templates of the current model"
 msgstr "Templates do modelo atual"
 
-#: src/components/Footer.tsx:13
+#: src/components/Footer.tsx:11
 msgid "Terms and Conditions"
 msgstr "Termos e Condições"
 
@@ -1200,7 +1196,7 @@ msgstr "Esta função exibirá uma amostra de áudio do campo selecionado."
 msgid "This link may be broken or the typed URL is incorrect."
 msgstr "Este link pode estar quebrado ou a URL digitada está incorreta."
 
-#: src/pages/GeneralSettings.tsx:116
+#: src/pages/GeneralSettings.tsx:120
 msgid "Time zone"
 msgstr "Fuso horário"
 
@@ -1229,10 +1225,6 @@ msgstr "Tente primeiro criar um deck e estude-o para que possa ver suas estatís
 #: src/pages/StatisticsPage.tsx:320
 msgid "Try selecting a broader interval above."
 msgstr "Tente selecionar um intervalo mais amplo acima."
-
-#: src/components/Footer.tsx:36
-msgid "Twitter"
-msgstr "Twitter"
 
 #: src/pages/LandingPage.tsx:36
 msgid "Two overlapping blue rectangles"
@@ -1263,11 +1255,11 @@ msgstr "Atualizar senha da conta"
 msgid "Update your account email"
 msgstr "Atualize o email de sua conta"
 
-#: src/pages/GeneralSettings.tsx:101
+#: src/pages/GeneralSettings.tsx:105
 msgid "Update your preferred language for headlines, buttons and other texts."
 msgstr "Atualize sua língua preferida para manchetes, botões e outros textos."
 
-#: src/pages/GeneralSettings.tsx:116
+#: src/pages/GeneralSettings.tsx:120
 msgid "Used to compute the statistics and study schedule in your local time."
 msgstr "Usado para computar as estatísticas e o cronograma de estudo em seu tempo local."
 
@@ -1409,7 +1401,7 @@ msgstr "Começar os estudos"
 msgid "login.button"
 msgstr "Entrar"
 
-#: src/components/HomePageSidebar.tsx:28
+#: src/components/HomePageSidebar.tsx:27
 msgid "new"
 msgstr "novo"
 

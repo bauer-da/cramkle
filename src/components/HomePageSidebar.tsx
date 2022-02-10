@@ -38,7 +38,7 @@ const HomePageSidebar: FC<{ className?: string }> = ({ className }) => {
         <a href="https://bauer-ec.de" target="_blank" rel="noreferrer">
           Bauer DeutschAkademie
         </a>
-      </footer> */}
+      </footer>
     </nav>
   )
 }

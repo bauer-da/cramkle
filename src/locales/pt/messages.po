@@ -905,7 +905,7 @@ msgstr "Senha precisa ter pelo menos 6 caracteres"
 
 #: src/components/FlashCardRenderer.tsx:58
 msgid "Play"
-msgstr ""
+msgstr "Reproducir"
 
 #: src/utils/errorFallback.tsx:10
 msgid "Please, try reloading the page"
@@ -1035,11 +1035,11 @@ msgstr "Buscar notas..."
 #: src/components/editor/forms/TextInputForm.tsx:35
 #: src/components/editor/forms/TextToSpeechForm.tsx:36
 msgid "Select a field"
-msgstr ""
+msgstr "Selecione um campo"
 
 #: src/components/editor/forms/TextToSpeechForm.tsx:44
 msgid "Select a language"
-msgstr ""
+msgstr "Selecione o idioma"
 
 #: src/pages/AddNotePage.tsx:144
 msgid "Select a model"
@@ -1149,12 +1149,12 @@ msgstr "Termos e Condições"
 #: src/components/editor/InlineFunctionControls.tsx:11
 #: src/components/editor/forms/TextInputForm.tsx:24
 msgid "Text Input"
-msgstr ""
+msgstr "introdução de texto"
 
 #: src/components/editor/InlineFunctionControls.tsx:10
 #: src/components/editor/forms/TextToSpeechForm.tsx:26
 msgid "Text to Speech"
-msgstr ""
+msgstr "Texto em fala"
 
 #: src/pages/AddNotePage.tsx:170
 msgid "The selected model doesn't have any fields. <0>Click here to edit it</0>"
@@ -1190,11 +1190,11 @@ msgstr "Esse deck não possui notas ainda"
 
 #: src/components/editor/forms/TextInputForm.tsx:27
 msgid "This function will add an input validator to the selected field. It will ask you to type the current fiend and compare your input."
-msgstr ""
+msgstr "Esta função adicionará um validador de entrada ao campo selecionado. Ele pedirá que você digite o campo atual e compare sua entrada."
 
 #: src/components/editor/forms/TextToSpeechForm.tsx:29
 msgid "This function will display an audio sample of the selected field."
-msgstr ""
+msgstr "Esta função exibirá uma amostra de áudio do campo selecionado."
 
 #: src/pages/NotFoundPage.tsx:11
 msgid "This link may be broken or the typed URL is incorrect."

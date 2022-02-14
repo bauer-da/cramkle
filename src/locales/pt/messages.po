@@ -1071,7 +1071,7 @@ msgstr "Algo de errado aconteceu"
 
 #: src/pages/GeneralSettings.tsx:43
 msgid "Spanish"
-msgstr ""
+msgstr "Espanhol"
 
 #: src/pages/StudySection.tsx:78
 msgid "Start Session"

@@ -74,10 +74,10 @@ app.get('/healthz', (_, res) => {
 app.use(
   '/_c',
   createProxyMiddleware({
-    target: 'http://localhost:5000',
+    target: 'http://hipocampo:5000',
     changeOrigin: true,
     cookieDomainRewrite: {
-      'http://localhost:5000': 'http://localhost:3000',
+      'http://hipocampo:5000': 'http://cramkle:3000',
     },
     logLevel: 'silent',
   })

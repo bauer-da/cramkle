@@ -84,6 +84,20 @@ app.use(
 )
 
 app.use(
+  '/_audio',
+  createProxyMiddleware({
+    target:
+      'https://us-central1-slang-92215.cloudfunctions.net/vocabulary-getAudio',
+    changeOrigin: true,
+    cookieDomainRewrite: {
+      'https://us-central1-slang-92215.cloudfunctions.net/vocabulary-getAudio':
+        'http://cramkle:3000',
+    },
+    logLevel: 'silent',
+  })
+)
+
+app.use(
   requestLanguage({
     languages: ['en', 'pt', 'es'],
     cookie: {

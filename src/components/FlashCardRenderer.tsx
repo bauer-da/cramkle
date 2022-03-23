@@ -61,8 +61,7 @@ const FlashCardAudioPlayer: React.FC<FlashCardAudioPlayerProps> = ({
   contentState,
 }) => {
   // TODO: Find a better way to handle audio requests
-  const AudioApiUrl =
-    'https://us-central1-slang-92215.cloudfunctions.net/vocabulary-getAudio'
+  const AudioApiUrl = '/_audio'
 
   const [isAudioReady, setIsAudioReady] = React.useState(false)
   const [audioEl, setAudioEl] =
